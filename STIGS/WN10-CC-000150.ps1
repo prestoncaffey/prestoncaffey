@@ -28,3 +28,4 @@ if (-not (Test-Path $regPath)) {
 }
 
 New-ItemProperty -Path $regPath -Name "ACSettingIndex" -PropertyType DWord -Value 1 -Force
+  
