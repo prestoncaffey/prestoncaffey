@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
-   This PowerShell script modifies a specific Windows power management setting by editing the system registry. The script first checks if the registry key exists and creates it if necessary. It then sets the ACSettingIndex value to 1, which typically enables or configures a specific behavior when the system is plugged into AC power
+   This PowerShell script modifies a specific Windows power management setting by editing the system registry. The script first checks if the registry key exists and creates it if necessary. 
+   It then sets the ACSettingIndex value to 1, which typically enables or configures a specific behavior when the system is plugged into AC power
 
 .NOTES
     Author          : Preston Caffey
