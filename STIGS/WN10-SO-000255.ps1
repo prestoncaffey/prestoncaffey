@@ -21,15 +21,12 @@
 
 #>
 
-# Main System Policy Registry Path
 $regPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System"
 
-# Create main registry key if it doesn't exist
 if (-not (Test-Path $regPath)) {
     New-Item -Path $regPath -Force | Out-Null
 }
 
-# Set main system values
 $values = @{
     "ConsentPromptBehaviorUser"        = 0x00000000
     "ConsentPromptBehaviorAdmin"       = 0x00000005
@@ -58,11 +55,9 @@ foreach ($name in $values.Keys) {
     New-ItemProperty -Path $regPath -Name $name -Value $values[$name] -PropertyType DWord -Force | Out-Null
 }
 
-# Override string types for legalnoticecaption and legalnoticetext
 Set-ItemProperty -Path $regPath -Name "legalnoticecaption" -Value "" -Type String
 Set-ItemProperty -Path $regPath -Name "legalnoticetext" -Value "" -Type String
 
-# Create subkeys
 $subkeys = @(
     "$regPath\Audit",
     "$regPath\UIPI",
@@ -76,7 +71,6 @@ foreach ($key in $subkeys) {
     }
 }
 
-# Set Clipboard ExceptionFormats values
 $clipboardFormats = @{
     "CF_BITMAP"       = 0x00000002
     "CF_DIB"          = 0x00000008
