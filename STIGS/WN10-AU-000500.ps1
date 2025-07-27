@@ -25,10 +25,8 @@ $registryPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\EventLog\Application"
 $propertyName = "MaxSize"
 $propertyValue = 0x8000  # 32768 in decimal
 
-# Create the registry key path if it doesn't exist
 if (-not (Test-Path $registryPath)) {
     New-Item -Path $registryPath -Force | Out-Null
 }
 
-# Set the MaxSize DWORD value
 New-ItemProperty -Path $registryPath -Name $propertyName -PropertyType DWord -Value $propertyValue -Force
